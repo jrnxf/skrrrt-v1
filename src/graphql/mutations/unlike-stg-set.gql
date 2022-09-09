@@ -1,0 +1,14 @@
+#import "../fragments/tiny-stg-set.gql"
+
+mutation UnlikeStgSetMutation($stg_set_id: Int!) {
+  delete_likes_stg_set_user(where: { stg_set_id: { _eq: $stg_set_id } }) {
+    returning {
+      stg_set_id
+      stg_set {
+        ...TinyStgSet
+      }
+      liked_by_user_id
+      __typename
+    }
+  }
+}

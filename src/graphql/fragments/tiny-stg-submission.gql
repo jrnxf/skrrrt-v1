@@ -1,0 +1,57 @@
+#import "./stg-submission-video.gql"
+#import "./stg-submission-message.gql"
+#import "./tiny-stg-set.gql"
+
+fragment TinyStgSubmission on stg_submissions {
+  id
+  stg_id
+  video_asset_id
+  video_playback_id
+  created_at
+  stg_id
+  submitted_by_id
+  submitted_by {
+    id
+    full_name
+    username
+    avatar
+    bio
+    disciplines {
+      discipline
+    }
+    socials {
+      facebook
+      twitter
+      instagram
+      youtube
+      tiktok
+      spotify
+    }
+    locations {
+      id
+      type
+      lat
+      lng
+      country_long_name
+      country_short_name
+      formatted_address
+    }
+  }
+  set_landed {
+    ...TinyStgSet
+  }
+  likes {
+    liked_by_user_id
+    user {
+      full_name
+    }
+  }
+  messages_aggregate {
+    aggregate {
+      count
+    }
+  }
+  messages(order_by: { created_at: asc }) {
+    ...StgSubmissionMessage
+  }
+}

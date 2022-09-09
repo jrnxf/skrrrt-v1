@@ -1,0 +1,18 @@
+mutation UnlikeStgSubmissionMutation($stg_submission_id: Int!) {
+  delete_likes_stg_submission_user(where: { stg_submission_id: { _eq: $stg_submission_id } }) {
+    returning {
+      stg_submission {
+        id
+        likes {
+          user {
+            id
+          }
+        }
+      }
+      user {
+        id
+      }
+      __typename
+    }
+  }
+}

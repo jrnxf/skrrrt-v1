@@ -1,0 +1,14 @@
+#import "../fragments/stg-set-message.gql"
+mutation UnlikeStgSetMessageMutation($stg_set_message_id: Int!) {
+  delete_likes_stg_set_message_user(where: { stg_set_message_id: { _eq: $stg_set_message_id } }) {
+    returning {
+      set_message {
+        ...StgSetMessage
+      }
+      user {
+        full_name
+      }
+      __typename
+    }
+  }
+}

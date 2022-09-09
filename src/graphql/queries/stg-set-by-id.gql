@@ -1,0 +1,7 @@
+#import "../fragments/stg-set.gql"
+
+query StgSetByIdQuery($id: Int!) {
+  stg_sets_by_pk(id: $id) {
+    ...StgSet
+  }
+}

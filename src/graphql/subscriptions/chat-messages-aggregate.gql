@@ -1,0 +1,7 @@
+subscription ChatMessagesAggregateSubscription {
+  chat_messages_aggregate {
+    aggregate {
+      count
+    }
+  }
+}

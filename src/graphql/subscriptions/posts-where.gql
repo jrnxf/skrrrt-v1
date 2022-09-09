@@ -1,0 +1,12 @@
+#import "../fragments/summary-post.gql"
+
+subscription PostsWhereSubscription(
+  $where: v_posts_sorted_bool_exp
+  $limit: Int!
+) {
+  v_posts_sorted(where: $where, limit: $limit) {
+    post {
+      ...SummaryPost
+    }
+  }
+}

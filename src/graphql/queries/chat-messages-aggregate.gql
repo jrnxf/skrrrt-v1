@@ -1,0 +1,7 @@
+query ChatMessagesAggregateQuery {
+  chat_messages_aggregate {
+    aggregate {
+      count
+    }
+  }
+}

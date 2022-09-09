@@ -1,0 +1,30 @@
+fragment TinyUser on users {
+  id
+  full_name
+  username
+  avatar
+  bio
+  profession
+  created_at
+  updated_at
+  activity {
+    app
+  }
+  locations {
+    type
+    country_long_name
+    country_short_name
+    formatted_address
+  }
+  socials {
+    facebook
+    twitter
+    instagram
+    youtube
+    tiktok
+    spotify
+  }
+  disciplines {
+    discipline
+  }
+}

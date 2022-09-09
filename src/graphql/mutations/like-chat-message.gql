@@ -1,0 +1,15 @@
+#import "../fragments/chat-message.gql"
+mutation LikeChatMessageMutation($chat_message_id: Int!) {
+  insert_likes_chat_message_user_one(
+    object: { chat_message_id: $chat_message_id }
+    on_conflict: { constraint: likes_chat_message_user_pkey, update_columns: [] }
+  ) {
+    chat_message {
+      ...ChatMessage
+    }
+    user {
+      id
+    }
+    __typename
+  }
+}

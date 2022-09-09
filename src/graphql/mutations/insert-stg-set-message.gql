@@ -1,0 +1,6 @@
+#import "../fragments/stg-set-message.gql"
+mutation InsertStgSetMessageMutation($stg_set_id: Int!, $text: String!) {
+  insert_stg_set_messages_one(object: { stg_set_id: $stg_set_id, text: $text }) {
+    ...StgSetMessage
+  }
+}

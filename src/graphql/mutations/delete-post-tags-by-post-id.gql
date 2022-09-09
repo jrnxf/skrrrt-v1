@@ -1,0 +1,5 @@
+mutation DeletePostTagsByPostIdMutation($post_id: Int!) {
+  delete_post_tags(where: { post_id: { _eq: $post_id } }) {
+    affected_rows
+  }
+}

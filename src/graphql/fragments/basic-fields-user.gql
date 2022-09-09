@@ -1,0 +1,32 @@
+fragment BasicFieldsUser on users {
+  id
+  full_name
+  username
+  bio
+  avatar
+  profession
+  created_at
+  updated_at
+  role
+  is_registered_for_upcoming_stg
+  activity {
+    app
+  }
+  locations {
+    id
+    type
+    lat
+    lng
+    country_long_name
+    country_short_name
+    formatted_address
+  }
+  socials {
+    facebook
+    twitter
+    instagram
+    youtube
+    tiktok
+    spotify
+  }
+}

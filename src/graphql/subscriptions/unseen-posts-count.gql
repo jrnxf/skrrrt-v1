@@ -1,0 +1,7 @@
+subscription UnseenPostsCountSubscription($posts_page_activity: timestamptz) {
+  posts_aggregate(where: { created_at: { _gt: $posts_page_activity } }) {
+    aggregate {
+      count
+    }
+  }
+}

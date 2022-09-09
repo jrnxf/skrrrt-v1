@@ -1,0 +1,9 @@
+subscription UnseenChatMessagesCountSubscription(
+  $chat_page_activity: timestamptz
+) {
+  chat_messages_aggregate(where: { created_at: { _gt: $chat_page_activity } }) {
+    aggregate {
+      count
+    }
+  }
+}

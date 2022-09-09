@@ -1,0 +1,12 @@
+#import "../fragments/tiny-user.gql"
+
+mutation LikeUserMutation($liked_user_id: Int!) {
+  insert_likes_user_user_one(
+    object: { liked_user_id: $liked_user_id }
+    on_conflict: { constraint: likes_user_user_pkey, update_columns: [] }
+  ) {
+    liked_user {
+      ...User
+    }
+  }
+}

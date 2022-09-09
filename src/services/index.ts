@@ -1,0 +1,8 @@
+export { AuthService } from './auth.service'
+export { ChatService } from './chat.service'
+export { LocationsService } from './locations.service'
+export { LoggerService } from './logger.service'
+export { MediaService } from './media.service'
+export { SendService } from './send.service'
+export { StgService } from './stg.service'
+export { UsersService } from './users.service'

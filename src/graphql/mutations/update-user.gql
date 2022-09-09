@@ -1,0 +1,40 @@
+#import "../fragments/authd-user.gql"
+
+mutation UpdateUserMutation(
+  $full_name: String
+  $username: String
+  $bio: String
+  $profession: String
+  $birthday: date
+  $nbds: jsonb
+  $teams: jsonb
+  $favorite_tricks: jsonb
+  $trick_todos: jsonb
+  # $willing_to_host: Boolean
+  $interests: jsonb
+  $avatar: String
+  $current_setup: String
+) {
+  update_users(
+    where: {}
+    _set: {
+      full_name: $full_name
+      username: $username
+      bio: $bio
+      profession: $profession
+      birthday: $birthday
+      nbds: $nbds
+      teams: $teams
+      favorite_tricks: $favorite_tricks
+      # willing_to_host: $willing_to_host
+      trick_todos: $trick_todos
+      interests: $interests
+      avatar: $avatar
+      current_setup: $current_setup
+    }
+  ) {
+    returning {
+      ...AuthdUser
+    }
+  }
+}

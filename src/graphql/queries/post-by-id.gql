@@ -1,0 +1,7 @@
+#import "../fragments/post.gql"
+
+query PostByIdQuery($id: Int!) {
+  posts_by_pk(id: $id) {
+    ...Post
+  }
+}

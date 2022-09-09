@@ -1,0 +1,5 @@
+query UserDisciplineOptionsQuery {
+  e_user_disciplines {
+    type
+  }
+}

@@ -1,0 +1,131 @@
+table:
+  schema: public
+  name: stg_submissions
+object_relationships:
+  - name: set_landed
+    using:
+      foreign_key_constraint_on: stg_set_id
+  - name: stg
+    using:
+      foreign_key_constraint_on: stg_id
+  - name: submitted_by
+    using:
+      foreign_key_constraint_on: submitted_by_id
+array_relationships:
+  - name: likes
+    using:
+      foreign_key_constraint_on:
+        column: stg_submission_id
+        table:
+          schema: public
+          name: likes_stg_submission_user
+  - name: messages
+    using:
+      foreign_key_constraint_on:
+        column: stg_submission_id
+        table:
+          schema: public
+          name: stg_submission_messages
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        _and:
+          - set_landed:
+              set_by_id:
+                _ne: X-Hasura-User-Id
+          - submitted_by_id:
+              _eq: X-Hasura-User-Id
+          - stg:
+              players:
+                player_id:
+                  _eq: X-Hasura-User-Id
+      set:
+        submitted_by_id: x-hasura-User-Id
+      columns:
+        - created_at
+        - id
+        - stg_id
+        - stg_set_id
+        - submitted_by_id
+        - updated_at
+        - video_asset_id
+        - video_playback_id
+      backend_only: false
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - created_at
+        - id
+        - stg_id
+        - stg_set_id
+        - submitted_by_id
+        - updated_at
+        - video_asset_id
+        - video_playback_id
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+        - created_at
+        - id
+        - stg_id
+        - stg_set_id
+        - submitted_by_id
+        - updated_at
+        - video_asset_id
+        - video_playback_id
+      filter: {}
+      allow_aggregations: true
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - created_at
+        - id
+        - stg_id
+        - stg_set_id
+        - submitted_by_id
+        - updated_at
+        - video_asset_id
+        - video_playback_id
+      filter:
+        _and:
+          - set_landed:
+              set_by_id:
+                _ne: X-Hasura-User-Id
+          - submitted_by_id:
+              _eq: X-Hasura-User-Id
+          - stg:
+              players:
+                player_id:
+                  _eq: X-Hasura-User-Id
+      check:
+        _and:
+          - set_landed:
+              set_by_id:
+                _ne: X-Hasura-User-Id
+          - submitted_by_id:
+              _eq: X-Hasura-User-Id
+          - stg:
+              players:
+                player_id:
+                  _eq: X-Hasura-User-Id
+      set:
+        submitted_by_id: x-hasura-User-Id
+delete_permissions:
+  - role: user
+    permission:
+      filter:
+        _and:
+          - set_landed:
+              set_by_id:
+                _ne: X-Hasura-User-Id
+          - submitted_by_id:
+              _eq: X-Hasura-User-Id
+          - stg:
+              players:
+                player_id:
+                  _eq: X-Hasura-User-Id

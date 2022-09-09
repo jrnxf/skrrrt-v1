@@ -1,0 +1,5 @@
+query PostTagOptionsQuery {
+  e_post_tags {
+    type
+  }
+}

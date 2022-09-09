@@ -1,0 +1,9 @@
+mutation InsertUserDisciplinesMutation(
+  $objects: [user_disciplines_insert_input!]!
+) {
+  insert_user_disciplines(objects: $objects) {
+    returning {
+      discipline
+    }
+  }
+}

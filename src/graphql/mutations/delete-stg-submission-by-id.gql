@@ -1,0 +1,10 @@
+#import "../fragments/stg.gql"
+
+mutation DeleteStgSubmissionByIdMutation($id: Int!) {
+  delete_stg_submissions_by_pk(id: $id) {
+    id
+    stg {
+      ...Stg
+    }
+  }
+}

@@ -1,0 +1,25 @@
+fragment ChatMessage on chat_messages {
+  id
+  text
+  author_id
+  author {
+    id
+    full_name
+    username
+    activity {
+      app
+    }
+  }
+  likes {
+    chat_message_id
+    liked_by_user_id
+    user {
+      id
+      full_name
+      username
+    }
+    __typename
+  }
+  created_at
+  __typename
+}

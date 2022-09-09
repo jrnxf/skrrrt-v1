@@ -1,0 +1,65 @@
+#import "./summary-post.gql"
+
+fragment User on users {
+  id
+  full_name
+  username
+  avatar
+  current_setup
+  bio
+  profession
+  birthday
+  created_at
+  updated_at
+  willing_to_host
+  disciplines {
+    discipline
+  }
+  public_trick_todos {
+    todo
+  }
+  nbds
+  teams
+  favorite_tricks
+  interests
+  role
+  is_registered_for_upcoming_stg
+  locations {
+    id
+    type
+    lat
+    lng
+    country_long_name
+    country_short_name
+    formatted_address
+  }
+  liked_users {
+    liked_by_user_id
+    liked_by {
+      id
+      full_name
+      username
+      avatar
+    }
+  }
+  liked_by {
+    liked_user_id
+    liked_user {
+      id
+      full_name
+      username
+      avatar
+    }
+  }
+  socials {
+    facebook
+    twitter
+    instagram
+    youtube
+    tiktok
+    spotify
+  }
+  posts(order_by: { created_at: desc }) {
+    ...SummaryPost
+  }
+}

@@ -1,0 +1,18 @@
+mutation DeleteStgPlayerMutation($stg_id: Int!) {
+  delete_stg_players(where: { stg: { status: { _eq: upcoming } } }) {
+    returning {
+      stg {
+        id
+        players {
+          player {
+            id
+            full_name
+            username
+            avatar
+          }
+        }
+      }
+    }
+    affected_rows
+  }
+}

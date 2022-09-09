@@ -1,0 +1,15 @@
+#import "../fragments/stg-set-message.gql"
+mutation LikeStgSetMessageMutation($stg_set_message_id: Int!) {
+  insert_likes_stg_set_message_user_one(
+    object: { stg_set_message_id: $stg_set_message_id }
+    on_conflict: { constraint: likes_stg_set_message_user_pkey, update_columns: [] }
+  ) {
+    set_message {
+      ...StgSetMessage
+    }
+    user {
+      full_name
+    }
+    __typename
+  }
+}

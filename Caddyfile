@@ -1,0 +1,14 @@
+www.skrrrt.io {
+  redir https://skrrrt.io{uri}
+}
+
+skrrrt.io {
+}
+
+oembed.skrrrt.io {
+  reverse_proxy * iframely:8061
+}
+
+graphql.skrrrt.io {
+  reverse_proxy * hasura:8080
+}

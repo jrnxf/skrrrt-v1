@@ -1,0 +1,15 @@
+#import "../fragments/tiny-stg-submission.gql"
+
+mutation LikeStgSubmissionMutation($stg_submission_id: Int!) {
+  insert_likes_stg_submission_user_one(
+    object: { stg_submission_id: $stg_submission_id }
+    on_conflict: { constraint: likes_stg_submission_user_pkey, update_columns: [] }
+  ) {
+    stg_submission_id
+    stg_submission {
+      ...TinyStgSubmission
+    }
+    liked_by_user_id
+    __typename
+  }
+}

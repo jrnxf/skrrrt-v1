@@ -1,0 +1,15 @@
+mutation InsertStgPlayerMutation($stg_id: Int!) {
+  insert_stg_players_one(object: { stg_id: $stg_id }) {
+    stg {
+      id
+      players {
+        player {
+          id
+          full_name
+          username
+          avatar
+        }
+      }
+    }
+  }
+}

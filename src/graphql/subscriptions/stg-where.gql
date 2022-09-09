@@ -1,0 +1,7 @@
+#import "../fragments/stg.gql"
+
+subscription StgsWhereSubscription($where: stgs_bool_exp) {
+  stgs(where: $where) {
+    ...Stg
+  }
+}

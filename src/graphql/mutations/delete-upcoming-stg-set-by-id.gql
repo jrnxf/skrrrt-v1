@@ -1,0 +1,44 @@
+#import "../fragments/set-video.gql"
+#import "../fragments/submission-video.gql"
+
+mutation DeleteUpcomingStgSetMutation {
+  delete_stg_sets(where: { stg: { status: { _eq: upcoming } } }) {
+    returning {
+      id
+      instructions
+      video_asset_id
+      video_playback_id
+      set_by {
+        full_name
+        username
+        id
+      }
+      stg {
+        id
+        status
+        sets {
+          id
+          instructions
+          video_asset_id
+          video_playback_id
+          set_by {
+            full_name
+            username
+            id
+          }
+        }
+        submissions {
+          id
+          video_asset_id
+          video_playback_id
+          created_at
+          submitted_by {
+            full_name
+            username
+            id
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,4 @@
+table:
+  schema: public
+  name: e_user_locations
+is_enum: true

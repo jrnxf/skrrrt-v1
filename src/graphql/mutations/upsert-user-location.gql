@@ -1,0 +1,49 @@
+mutation UpsertUserLocationMutation(
+  $type: e_user_locations_enum!
+  $lat: numeric!
+  $lng: numeric!
+  $country_long_name: String!
+  $country_short_name: String!
+  $formatted_address: String!
+) {
+  insert_user_locations_one(
+    object: {
+      type: $type
+      lat: $lat
+      lng: $lng
+      country_long_name: $country_long_name
+      country_short_name: $country_short_name
+      formatted_address: $formatted_address
+    }
+    on_conflict: {
+      constraint: user_locations_pkey
+      update_columns: [
+        type
+        lat
+        lng
+        country_long_name
+        country_short_name
+        formatted_address
+      ]
+    }
+  ) {
+    type
+    lat
+    lng
+    country_long_name
+    country_short_name
+    formatted_address
+    user {
+      full_name
+      locations {
+        id
+        type
+        lat
+        lng
+        country_long_name
+        country_short_name
+        formatted_address
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+#import "../fragments/chat-message.gql"
+
+subscription ChatMessagesSubscription {
+  chat_messages(order_by: { created_at: asc }) {
+    ...ChatMessage
+    __typename
+  }
+}

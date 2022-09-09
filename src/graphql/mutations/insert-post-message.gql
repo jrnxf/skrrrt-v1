@@ -1,0 +1,6 @@
+#import "../fragments/post-message.gql"
+mutation InsertPostMessageMutation($post_id: Int!, $text: String!) {
+  insert_post_messages_one(object: { post_id: $post_id, text: $text }) {
+    ...PostMessage
+  }
+}

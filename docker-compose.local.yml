@@ -1,0 +1,50 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:13
+    container_name: skrrrt_old_postgres
+    ports:
+      - 5432:5432
+    restart: unless-stopped
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    env_file:
+      - ./.env.development
+
+  iframely:
+    image: coloradocolby/iframely:latest
+    container_name: skrrrt_old_iframely
+    expose:
+      - 8061
+    restart: unless-stopped
+    volumes:
+      - ./iframely.config.js:/iframely/config.local.js
+
+  hasura:
+    image: hasura/graphql-engine:v2.10.1
+    container_name: skrrrt_old_hasura
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+    restart: unless-stopped
+    env_file:
+      - ./.env.development
+
+  caddy:
+    image: caddy:latest
+    container_name: skrrrt_old_caddy
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+      - 8081:8081
+      - 8062:8062
+    volumes:
+      - ./Caddyfile.local:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:

@@ -1,0 +1,13 @@
+localhost:8081 {
+  reverse_proxy * hasura:8080
+}
+
+localhost:8062 {
+  reverse_proxy * iframely:8061
+}
+
+# host.docker.internal on mac
+# 172.17.0.1 on linux
+localhost:80, localhost:443 {
+  reverse_proxy * host.docker.internal:3000
+}

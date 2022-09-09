@@ -1,0 +1,15 @@
+table:
+  schema: public
+  name: e_post_tags
+is_enum: true
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - type
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - type
+      filter: {}

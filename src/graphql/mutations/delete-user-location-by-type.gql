@@ -1,0 +1,9 @@
+mutation DeleteUserLocationByTypeMutation($type: e_user_locations_enum!) {
+  delete_user_locations(where: { type: { _eq: $type } }) {
+    returning {
+      lat
+      lng
+    }
+    affected_rows
+  }
+}

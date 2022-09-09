@@ -1,0 +1,11 @@
+#import "../fragments/tiny-user.gql"
+
+query LocationsByType($type: e_user_locations_enum!) {
+  user_locations(where: { type: { _eq: $type } }) {
+    lat
+    lng
+    user {
+      ...TinyUser
+    }
+  }
+}

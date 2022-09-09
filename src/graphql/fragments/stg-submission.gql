@@ -1,0 +1,50 @@
+#import "./stg-submission-video.gql"
+#import "./stg-submission-message.gql"
+#import "./tiny-stg-set.gql"
+
+fragment StgSubmission on stg_submissions {
+  id
+  stg_id
+  video_asset_id
+  video_playback_id
+  created_at
+  stg {
+    id
+    status
+    sets {
+      id
+      set_by_id
+      set_by {
+        id
+      }
+    }
+  }
+  submitted_by_id
+  submitted_by {
+    id
+    full_name
+    username
+    avatar
+    locations {
+      id
+      type
+      lat
+      lng
+      country_long_name
+      country_short_name
+      formatted_address
+    }
+  }
+  set_landed {
+    ...TinyStgSet
+  }
+  likes {
+    liked_by_user_id
+    user {
+      full_name
+    }
+  }
+  messages(order_by: { created_at: asc }) {
+    ...StgSubmissionMessage
+  }
+}

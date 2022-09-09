@@ -1,0 +1,56 @@
+table:
+  schema: public
+  name: likes_user_user
+configuration:
+  custom_root_fields: {}
+  custom_column_names:
+    liked_by_user_id: liked_by_user_id
+    liked_user_id: liked_user_id
+object_relationships:
+  - name: liked_by
+    using:
+      foreign_key_constraint_on: liked_by_user_id
+  - name: liked_user
+    using:
+      foreign_key_constraint_on: liked_user_id
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        liked_by_user_id:
+          _eq: X-Hasura-User-Id
+      set:
+        liked_by_user_id: x-hasura-User-Id
+      columns:
+        - liked_user_id
+      backend_only: false
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - liked_by_user_id
+        - liked_user_id
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+        - liked_user_id
+        - liked_by_user_id
+      filter: {}
+      allow_aggregations: true
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - liked_user_id
+      filter:
+        liked_by_user_id:
+          _eq: X-Hasura-User-Id
+      check: null
+delete_permissions:
+  - role: user
+    permission:
+      filter:
+        liked_by_user_id:
+          _eq: X-Hasura-User-Id

@@ -1,0 +1,73 @@
+table:
+  schema: public
+  name: stgs
+array_relationships:
+  - name: players
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: stg_players
+        insertion_order: null
+        column_mapping:
+          id: stg_id
+  - name: sets
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: stg_sets
+        insertion_order: null
+        column_mapping:
+          id: stg_id
+  - name: submissions
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: stg_submissions
+        insertion_order: null
+        column_mapping:
+          id: stg_id
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - created_at
+        - id
+        - status
+        - updated_at
+      backend_only: false
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - created_at
+        - id
+        - status
+        - updated_at
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - created_at
+        - id
+        - status
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - created_at
+        - id
+        - status
+        - updated_at
+      filter: {}
+      check: null
+delete_permissions:
+  - role: user
+    permission:
+      filter: {}

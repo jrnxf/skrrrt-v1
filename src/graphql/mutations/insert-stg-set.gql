@@ -1,0 +1,24 @@
+#import "../fragments/stg.gql"
+
+mutation InsertStgSetMutation(
+  $stg_id: Int!
+  $title: String!
+  $instructions: String!
+  $video_asset_id: String!
+  $video_playback_id: String!
+) {
+  insert_stg_sets_one(
+    object: {
+      stg_id: $stg_id
+      title: $title
+      instructions: $instructions
+      video_asset_id: $video_asset_id
+      video_playback_id: $video_playback_id
+    }
+  ) {
+    id
+    stg {
+      ...Stg
+    }
+  }
+}

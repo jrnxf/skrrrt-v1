@@ -1,0 +1,23 @@
+#import "../fragments/post.gql"
+
+mutation InsertPostMutation(
+  $body: String!
+  $image_url: String
+  $tags: post_tags_arr_rel_insert_input
+  $oembed: jsonb
+  $video_asset_id: String
+  $video_playback_id: String
+) {
+  insert_posts_one(
+    object: {
+      body: $body
+      tags: $tags
+      image_url: $image_url
+      video_playback_id: $video_playback_id
+      video_asset_id: $video_asset_id
+      oembed: $oembed
+    }
+  ) {
+    ...Post
+  }
+}

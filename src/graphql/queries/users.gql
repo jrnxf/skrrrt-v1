@@ -1,0 +1,7 @@
+#import "../fragments/tiny-user.gql"
+
+query UsersQuery {
+  users(order_by: { full_name: asc }) {
+    ...TinyUser
+  }
+}

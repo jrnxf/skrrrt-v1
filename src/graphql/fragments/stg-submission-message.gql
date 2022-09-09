@@ -1,0 +1,39 @@
+fragment StgSubmissionMessage on stg_submission_messages {
+  id
+  text
+  author_id
+  author {
+    id
+    full_name
+    username
+    avatar
+  }
+  likes {
+    liked_by_user_id
+    user {
+      full_name
+    }
+  }
+  stg_submission_id
+  submission {
+    id
+    messages(order_by: { created_at: asc }) {
+      id
+      text
+      author {
+        id
+        full_name
+        username
+        avatar
+      }
+      likes {
+        liked_by_user_id
+        user {
+          full_name
+        }
+      }
+    }
+  }
+  created_at
+  __typename
+}

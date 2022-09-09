@@ -1,0 +1,49 @@
+#import "./stg-set-video.gql"
+#import "./stg-set-message.gql"
+
+fragment TinyStgSet on stg_sets {
+  id
+  stg_id
+  video_asset_id
+  video_playback_id
+  title
+  instructions
+  set_by_id
+  created_at
+  set_by {
+    id
+    full_name
+    username
+    avatar
+    locations {
+      id
+      type
+      lat
+      lng
+      country_long_name
+      country_short_name
+      formatted_address
+    }
+  }
+  submissions_where_landed {
+    submitted_by {
+      full_name
+      username
+      avatar
+    }
+  }
+  submissions_where_landed_aggregate {
+    aggregate {
+      count
+    }
+  }
+  likes {
+    liked_by_user_id
+    user {
+      full_name
+    }
+  }
+  messages(order_by: { created_at: asc }) {
+    ...StgSetMessage
+  }
+}

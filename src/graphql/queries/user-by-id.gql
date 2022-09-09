@@ -1,0 +1,6 @@
+#import "../fragments/user.gql"
+query UserByIdQuery($id: Int!) {
+  users_by_pk(id: $id) {
+    ...User
+  }
+}

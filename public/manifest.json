@@ -1,0 +1,74 @@
+{
+  "app_name": "skrrrt",
+  "short_name": "skrrrt",
+  "description": "a une collective",
+  "display": "fullscreen",
+  "scope": "/",
+  "start_url": "/?source=pwa",
+  "icons": [
+    {
+      "src": "/icon_x128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon_x1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Games",
+      "short_name": "Games",
+      "url": "/games/stg/active?source=pwa",
+      "icons": [{ "src": "/icon_x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Posts",
+      "short_name": "Games",
+      "url": "/posts?source=pwa",
+      "icons": [{ "src": "/icon_x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Chat",
+      "short_name": "Chat",
+      "url": "/chat?source=pwa",
+      "icons": [{ "src": "/icon_x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Users",
+      "short_name": "Users",
+      "url": "/users?source=pwa",
+      "icons": [{ "src": "/icon_x192.png", "sizes": "192x192" }]
+    }
+  ],
+  "theme_color": "#1C2028",
+  "background_color": "#1C2028",
+  "url": "https://skrrrt.io",
+  "lang": "English",
+  "name": "skrrrt",
+  "orientation": "any",
+  "screenshots": [
+    {
+      "src": "/landing.png",
+      "type": "image/png",
+      "sizes": "981x515"
+    }
+  ]
+}

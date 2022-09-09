@@ -1,0 +1,7 @@
+#import "../fragments/user.gql"
+
+subscription UserByUsernameSubscription($username: String!) {
+  users(where: { username: { _eq: $username } }) {
+    ...User
+  }
+}

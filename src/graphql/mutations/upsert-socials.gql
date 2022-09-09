@@ -1,0 +1,34 @@
+mutation UpsertUserSocialsMutation(
+  $facebook: String
+  $twitter: String
+  $instagram: String
+  $youtube: String
+  $tiktok: String
+  $spotify: String
+) {
+  insert_user_socials(
+    objects: {
+      facebook: $facebook
+      twitter: $twitter
+      instagram: $instagram
+      youtube: $youtube
+      tiktok: $tiktok
+      spotify: $spotify
+    }
+    on_conflict: {
+      constraint: user_socials_pkey
+      update_columns: [facebook, twitter, instagram, youtube, tiktok, spotify]
+    }
+  ) {
+    affected_rows
+    returning {
+      user_id
+      facebook
+      twitter
+      instagram
+      youtube
+      tiktok
+      spotify
+    }
+  }
+}

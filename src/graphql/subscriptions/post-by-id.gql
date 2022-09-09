@@ -1,0 +1,7 @@
+#import "../fragments/post.gql"
+
+subscription PostByIdSubscription($id: Int!) {
+  posts_by_pk(id: $id) {
+    ...Post
+  }
+}

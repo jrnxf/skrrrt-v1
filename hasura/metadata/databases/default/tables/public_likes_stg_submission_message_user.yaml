@@ -1,0 +1,57 @@
+table:
+  schema: public
+  name: likes_stg_submission_message_user
+object_relationships:
+  - name: submission_message
+    using:
+      foreign_key_constraint_on: stg_submission_message_id
+  - name: user
+    using:
+      foreign_key_constraint_on: liked_by_user_id
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        liked_by_user_id:
+          _eq: X-Hasura-User-Id
+      set:
+        liked_by_user_id: x-hasura-User-Id
+      columns:
+        - stg_submission_message_id
+        - liked_by_user_id
+      backend_only: false
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - stg_submission_message_id
+        - liked_by_user_id
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+        - stg_submission_message_id
+        - liked_by_user_id
+      filter: {}
+      allow_aggregations: true
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - stg_submission_message_id
+        - liked_by_user_id
+      filter:
+        liked_by_user_id:
+          _eq: X-Hasura-User-Id
+      check:
+        liked_by_user_id:
+          _eq: X-Hasura-User-Id
+      set:
+        liked_by_user_id: x-hasura-User-Id
+delete_permissions:
+  - role: user
+    permission:
+      filter:
+        liked_by_user_id:
+          _eq: X-Hasura-User-Id

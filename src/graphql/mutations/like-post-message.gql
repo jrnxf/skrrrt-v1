@@ -1,0 +1,15 @@
+#import "../fragments/post-message.gql"
+mutation LikePostMessageMutation($post_message_id: Int!) {
+  insert_likes_post_message_user_one(
+    object: { post_message_id: $post_message_id }
+    on_conflict: { constraint: likes_post_message_user_pkey, update_columns: [] }
+  ) {
+    post_message {
+      ...PostMessage
+    }
+    user {
+      full_name
+    }
+    __typename
+  }
+}

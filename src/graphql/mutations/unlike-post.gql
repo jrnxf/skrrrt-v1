@@ -1,0 +1,13 @@
+#import "../fragments/post.gql"
+mutation UnlikePostMutation($post_id: Int!) {
+  delete_likes_post_user(where: { post_id: { _eq: $post_id } }) {
+    returning {
+      post_id
+      post {
+        ...Post
+      }
+      liked_by_user_id
+      __typename
+    }
+  }
+}

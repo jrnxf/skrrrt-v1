@@ -1,0 +1,7 @@
+#import "../fragments/stg-submission.gql"
+
+query StgSubmissionByIdQuery($id: Int!) {
+  stg_submissions_by_pk(id: $id) {
+    ...StgSubmission
+  }
+}

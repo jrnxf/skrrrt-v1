@@ -1,0 +1,112 @@
+table:
+  schema: public
+  name: posts
+object_relationships:
+  - name: posted_by
+    using:
+      foreign_key_constraint_on: posted_by_id
+array_relationships:
+  - name: likes
+    using:
+      foreign_key_constraint_on:
+        column: post_id
+        table:
+          schema: public
+          name: likes_post_user
+  - name: messages
+    using:
+      foreign_key_constraint_on:
+        column: post_id
+        table:
+          schema: public
+          name: post_messages
+  - name: tags
+    using:
+      foreign_key_constraint_on:
+        column: post_id
+        table:
+          schema: public
+          name: post_tags
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        posted_by_id:
+          _eq: X-Hasura-User-Id
+      set:
+        posted_by_id: x-hasura-User-Id
+      columns:
+        - body
+        - created_at
+        - embed_html
+        - embed_url
+        - id
+        - image_url
+        - oembed
+        - posted_by_id
+        - updated_at
+        - video_asset_id
+        - video_playback_id
+      backend_only: false
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - body
+        - created_at
+        - embed_html
+        - embed_url
+        - id
+        - image_url
+        - oembed
+        - posted_by_id
+        - updated_at
+        - video_asset_id
+        - video_playback_id
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+        - body
+        - created_at
+        - embed_html
+        - embed_url
+        - id
+        - image_url
+        - oembed
+        - posted_by_id
+        - updated_at
+        - video_asset_id
+        - video_playback_id
+      filter: {}
+      allow_aggregations: true
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - body
+        - created_at
+        - embed_html
+        - embed_url
+        - id
+        - image_url
+        - oembed
+        - posted_by_id
+        - updated_at
+        - video_asset_id
+        - video_playback_id
+      filter:
+        posted_by_id:
+          _eq: X-Hasura-User-Id
+      check:
+        posted_by_id:
+          _eq: X-Hasura-User-Id
+      set:
+        posted_by_id: x-hasura-User-Id
+delete_permissions:
+  - role: user
+    permission:
+      filter:
+        posted_by_id:
+          _eq: X-Hasura-User-Id

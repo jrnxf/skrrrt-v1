@@ -1,0 +1,8 @@
+#import "../fragments/user.gql"
+
+query UserProfileByUserIdQuery($id: Int!) {
+  users_by_pk(id: $id) {
+    ...User
+    trick_todos
+  }
+}

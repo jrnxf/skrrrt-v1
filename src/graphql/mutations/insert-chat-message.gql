@@ -1,0 +1,6 @@
+#import "../fragments/chat-message.gql"
+mutation InsertChatMessageMutation($text: String!) {
+  insert_chat_messages_one(object: { text: $text }) {
+    ...ChatMessage
+  }
+}

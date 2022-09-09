@@ -1,0 +1,23 @@
+table:
+  schema: public
+  name: e_user_disciplines
+is_enum: true
+array_relationships:
+  - name: user_disciplines
+    using:
+      foreign_key_constraint_on:
+        column: discipline
+        table:
+          schema: public
+          name: user_disciplines
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - type
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - type
+      filter: {}

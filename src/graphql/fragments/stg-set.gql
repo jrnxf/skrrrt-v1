@@ -1,0 +1,94 @@
+#import "./stg-set-video.gql"
+#import "./stg-submission-video.gql"
+#import "./stg-set-message.gql"
+#import "./stg-submission-message.gql"
+
+fragment StgSet on stg_sets {
+  id
+  stg_id
+  video_asset_id
+  video_playback_id
+  title
+  instructions
+  created_at
+  stg {
+    id
+    status
+    players {
+      player_id
+    }
+    sets {
+      id
+      set_by_id
+      set_by {
+        id
+      }
+    }
+  }
+  set_by_id
+  set_by {
+    id
+    full_name
+    username
+    avatar
+    locations {
+      id
+      type
+      lat
+      lng
+      country_long_name
+      country_short_name
+      formatted_address
+    }
+  }
+  submissions_where_landed_aggregate {
+    aggregate {
+      count
+    }
+  }
+  submissions_where_landed {
+    id
+    created_at
+    video_asset_id
+    video_playback_id
+    stg_id
+    stg_set_id
+    set_landed {
+      title
+    }
+    submitted_by_id
+    submitted_by {
+      id
+      full_name
+      username
+      avatar
+      locations {
+        id
+        type
+        lat
+        lng
+        country_long_name
+        country_short_name
+        formatted_address
+      }
+    }
+    messages(order_by: { created_at: asc }) {
+      ...StgSubmissionMessage
+    }
+    likes {
+      liked_by_user_id
+      user {
+        full_name
+      }
+    }
+  }
+  likes {
+    liked_by_user_id
+    user {
+      full_name
+    }
+  }
+  messages(order_by: { created_at: asc }) {
+    ...StgSetMessage
+  }
+}

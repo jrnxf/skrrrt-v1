@@ -1,0 +1,46 @@
+**/public/workbox-*.js
+**/public/sw.js
+**/public/fallback-*.js
+
+# database backups
+db_backups/
+
+# dependencies
+node_modules/*
+**/node_modules/*
+# zip files
+*.zip
+
+# testing
+coverage
+
+# next.js
+.next/
+out/
+
+# production
+build
+dist
+
+# misc
+.DS_Store
+
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# vercel
+.vercel
+
+#psql dumps
+dump.sql
+dump.dump
+
+.env*
+!.env.example*
+
+# TODO make public when v1 is deprecated
+aws/**

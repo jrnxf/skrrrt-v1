@@ -1,0 +1,46 @@
+#import "./tiny-stg-set.gql"
+#import "./tiny-stg-submission.gql"
+
+fragment Stg on stgs {
+  id
+  status
+  created_at
+  updated_at
+  players {
+    player_id
+    player {
+      id
+      full_name
+      username
+      avatar
+      bio
+      disciplines {
+        discipline
+      }
+      socials {
+        facebook
+        twitter
+        instagram
+        youtube
+        tiktok
+        spotify
+      }
+      locations {
+        id
+        type
+        lat
+        lng
+        country_long_name
+        country_short_name
+        formatted_address
+      }
+    }
+  }
+  sets(order_by: { created_at: asc }) {
+    ...TinyStgSet
+  }
+  submissions(order_by: { created_at: desc }) {
+    #) # order_by: { sets_landed_aggregate: { count: desc }, created_at: asc } #(
+    ...TinyStgSubmission
+  }
+}

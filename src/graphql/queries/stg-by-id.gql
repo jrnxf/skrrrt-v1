@@ -1,0 +1,7 @@
+#import "../fragments/stg-by-id.gql"
+
+query StgByIdQuery($id: Int!) {
+  stgs_by_pk(id: $id) {
+    ...StgById
+  }
+}

@@ -1,0 +1,7 @@
+query PostsWhereAggregateQuery($where: v_posts_sorted_bool_exp) {
+  v_posts_sorted_aggregate(where: $where) {
+    aggregate {
+      count
+    }
+  }
+}

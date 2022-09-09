@@ -1,0 +1,14 @@
+#import "../fragments/chat-message.gql"
+mutation UnlikeChatMessageMutation($chat_message_id: Int!) {
+  delete_likes_chat_message_user(where: { chat_message_id: { _eq: $chat_message_id } }) {
+    returning {
+      chat_message {
+        ...ChatMessage
+      }
+      user {
+        id
+      }
+      __typename
+    }
+  }
+}

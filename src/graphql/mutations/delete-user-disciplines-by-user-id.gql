@@ -1,0 +1,5 @@
+mutation DeleteUserDisciplinesMutation {
+  delete_user_disciplines(where: {}) {
+    affected_rows
+  }
+}

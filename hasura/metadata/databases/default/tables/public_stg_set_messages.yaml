@@ -1,0 +1,81 @@
+table:
+  schema: public
+  name: stg_set_messages
+object_relationships:
+  - name: author
+    using:
+      foreign_key_constraint_on: author_id
+  - name: set
+    using:
+      foreign_key_constraint_on: stg_set_id
+array_relationships:
+  - name: likes
+    using:
+      foreign_key_constraint_on:
+        column: stg_set_message_id
+        table:
+          schema: public
+          name: likes_stg_set_message_user
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        author_id:
+          _eq: X-Hasura-User-Id
+      set:
+        author_id: x-hasura-User-Id
+      columns:
+        - text
+        - created_at
+        - updated_at
+        - author_id
+        - id
+        - stg_set_id
+      backend_only: false
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - text
+        - author_id
+        - stg_set_id
+        - created_at
+        - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+        - text
+        - created_at
+        - updated_at
+        - author_id
+        - id
+        - stg_set_id
+      filter: {}
+      allow_aggregations: true
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - text
+        - created_at
+        - updated_at
+        - author_id
+        - id
+        - stg_set_id
+      filter:
+        author_id:
+          _eq: X-Hasura-User-Id
+      check:
+        author_id:
+          _eq: X-Hasura-User-Id
+      set:
+        author_id: x-hasura-User-Id
+delete_permissions:
+  - role: user
+    permission:
+      filter:
+        author_id:
+          _eq: X-Hasura-User-Id

@@ -1,0 +1,5 @@
+export enum VIDEO_TYPES {
+  STG_SET = 'STG_SET',
+  STG_SUBMISSION = 'STG_SUBMISSION',
+  POST = 'POST',
+}

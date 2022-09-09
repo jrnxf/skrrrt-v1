@@ -1,0 +1,6 @@
+#import "../fragments/authd-user.gql"
+query AuthdUserByIdQuery($id: Int!) {
+  users_by_pk(id: $id) {
+    ...AuthdUser
+  }
+}

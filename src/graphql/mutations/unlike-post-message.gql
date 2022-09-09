@@ -1,0 +1,14 @@
+#import "../fragments/post-message.gql"
+mutation UnlikePostMessageMutation($post_message_id: Int!) {
+  delete_likes_post_message_user(where: { post_message_id: { _eq: $post_message_id } }) {
+    returning {
+      post_message {
+        ...PostMessage
+      }
+      user {
+        full_name
+      }
+      __typename
+    }
+  }
+}

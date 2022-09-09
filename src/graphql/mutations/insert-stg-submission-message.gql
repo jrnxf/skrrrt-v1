@@ -1,0 +1,8 @@
+#import "../fragments/stg-submission-message.gql"
+mutation InsertStgSubmissionMessageMutation($stg_submission_id: Int!, $text: String!) {
+  insert_stg_submission_messages_one(
+    object: { stg_submission_id: $stg_submission_id, text: $text }
+  ) {
+    ...StgSubmissionMessage
+  }
+}

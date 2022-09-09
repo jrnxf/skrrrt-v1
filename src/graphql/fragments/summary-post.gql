@@ -1,0 +1,50 @@
+fragment SummaryPost on posts {
+  id
+  body
+  tags {
+    tag
+  }
+  created_at
+  updated_at
+  posted_by_id
+  posted_by {
+    id
+    full_name
+    username
+    avatar
+  }
+  likes {
+    liked_by_user_id
+    user {
+      full_name
+    }
+  }
+  messages(order_by: { created_at: asc }) {
+    id
+    text
+    created_at
+    author_id
+    author {
+      id
+      full_name
+      username
+      avatar
+    }
+    likes {
+      liked_by_user_id
+      user {
+        full_name
+      }
+    }
+  }
+  messages_aggregate {
+    aggregate {
+      count
+    }
+  }
+  image_url
+  video_asset_id
+  video_playback_id
+  oembed
+  __typename
+}

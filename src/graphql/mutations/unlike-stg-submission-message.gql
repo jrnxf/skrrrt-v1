@@ -1,0 +1,16 @@
+#import "../fragments/stg-submission-message.gql"
+mutation UnlikeStgSubmissionMessageMutation($stg_submission_message_id: Int!) {
+  delete_likes_stg_submission_message_user(
+    where: { stg_submission_message_id: { _eq: $stg_submission_message_id } }
+  ) {
+    returning {
+      submission_message {
+        ...StgSubmissionMessage
+      }
+      user {
+        full_name
+      }
+      __typename
+    }
+  }
+}

@@ -1,0 +1,28 @@
+table:
+  schema: public
+  name: v_posts_sorted
+object_relationships:
+  - name: post
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: posts
+        insertion_order: null
+        column_mapping:
+          id: id
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - created_at
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+        - created_at
+        - id
+      filter: {}
+      allow_aggregations: true

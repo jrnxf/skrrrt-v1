@@ -1,0 +1,14 @@
+#import "../fragments/post.gql"
+mutation LikePostMutation($post_id: Int!) {
+  insert_likes_post_user_one(
+    object: { post_id: $post_id }
+    on_conflict: { constraint: likes_post_user_pkey, update_columns: [] }
+  ) {
+    post_id
+    post {
+      ...Post
+    }
+    liked_by_user_id
+    __typename
+  }
+}

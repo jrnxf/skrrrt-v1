@@ -1,0 +1,16 @@
+table:
+  schema: public
+  name: v_public_user_trick_todos
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - todo
+        - id
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - todo
+        - id
+      filter: {}

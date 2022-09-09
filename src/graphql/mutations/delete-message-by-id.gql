@@ -1,0 +1,19 @@
+#import "../fragments/chat-message.gql"
+#import "../fragments/post-message.gql"
+#import "../fragments/stg-set-message.gql"
+#import "../fragments/stg-submission-message.gql"
+
+mutation DeleteMessageByIdMutation($id: Int!) {
+  delete_chat_messages_by_pk(id: $id) {
+    ...ChatMessage
+  }
+  delete_stg_set_messages_by_pk(id: $id) {
+    ...StgSetMessage
+  }
+  delete_stg_submission_messages_by_pk(id: $id) {
+    ...StgSubmissionMessage
+  }
+  delete_post_messages_by_pk(id: $id) {
+    ...PostMessage
+  }
+}

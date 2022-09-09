@@ -1,0 +1,7 @@
+#import "../fragments/authd-user.gql"
+
+subscription AuthdUserByIdSubscription($id: Int!) {
+  users_by_pk(id: $id) {
+    ...AuthdUser
+  }
+}

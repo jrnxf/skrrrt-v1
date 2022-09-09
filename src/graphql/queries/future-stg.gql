@@ -1,0 +1,17 @@
+#import "../fragments/stg.gql"
+query UpcomingStgQuery {
+  stgs(where: { status: { _eq: upcoming } }) {
+    id
+    status
+    created_at
+    updated_at
+    sets(order_by: { created_at: asc }) {
+      set_by_id
+      set_by {
+        id
+        full_name
+        full_name
+      }
+    }
+  }
+}

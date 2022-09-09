@@ -1,0 +1,7 @@
+#import "../fragments/summary-post.gql"
+
+mutation DeletePostByIdMutation($post_id: Int!) {
+  delete_posts_by_pk(id: $post_id) {
+    ...SummaryPost
+  }
+}

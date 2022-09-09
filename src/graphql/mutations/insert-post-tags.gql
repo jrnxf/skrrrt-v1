@@ -1,0 +1,8 @@
+mutation InsertPostTagsMutation($objects: [post_tags_insert_input!]!) {
+  insert_post_tags(objects: $objects) {
+    returning {
+      post_id
+      tag
+    }
+  }
+}

@@ -1,0 +1,11 @@
+#import "../fragments/tiny-user.gql"
+
+mutation UnlikeUserMutation($liked_user_id: Int!) {
+  delete_likes_user_user(where: { liked_user_id: { _eq: $liked_user_id } }) {
+    returning {
+      liked_user {
+        ...User
+      }
+    }
+  }
+}

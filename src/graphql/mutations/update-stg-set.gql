@@ -1,0 +1,14 @@
+#import "../fragments/stg.gql"
+mutation UpdateStgSetMutation($title: String!, $instructions: String!) {
+  update_stg_sets(
+    where: { stg: { status: { _eq: upcoming } } }
+    _set: { title: $title, instructions: $instructions }
+  ) {
+    affected_rows
+    returning {
+      stg {
+        ...Stg
+      }
+    }
+  }
+}

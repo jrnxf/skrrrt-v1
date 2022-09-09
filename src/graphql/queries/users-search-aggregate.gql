@@ -1,0 +1,8 @@
+# make sure text passed in is formatted as so %<text here>%
+query UsersSearchAggregateQuery($where: users_bool_exp) {
+  users_aggregate(where: $where) {
+    aggregate {
+      count
+    }
+  }
+}

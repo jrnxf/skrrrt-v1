@@ -1,0 +1,69 @@
+table:
+  schema: public
+  name: stg_players
+object_relationships:
+  - name: player
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: users
+        insertion_order: null
+        column_mapping:
+          player_id: id
+  - name: stg
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: stgs
+        insertion_order: null
+        column_mapping:
+          stg_id: id
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        player_id:
+          _eq: X-Hasura-User-Id
+      set:
+        player_id: x-hasura-User-Id
+      columns:
+        - stg_id
+        - player_id
+      backend_only: false
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - stg_id
+        - player_id
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+        - stg_id
+        - player_id
+      filter: {}
+      allow_aggregations: true
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - stg_id
+        - player_id
+      filter:
+        player_id:
+          _eq: X-Hasura-User-Id
+      check:
+        player_id:
+          _eq: X-Hasura-User-Id
+      set:
+        player_id: x-hasura-User-Id
+delete_permissions:
+  - role: user
+    permission:
+      filter:
+        player_id:
+          _eq: X-Hasura-User-Id

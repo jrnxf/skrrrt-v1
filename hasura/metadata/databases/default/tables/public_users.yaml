@@ -1,0 +1,213 @@
+table:
+  schema: public
+  name: users
+object_relationships:
+  - name: activity
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: user_activity
+        insertion_order: null
+        column_mapping:
+          id: user_id
+  - name: socials
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: user_socials
+        insertion_order: null
+        column_mapping:
+          id: user_id
+array_relationships:
+  - name: chat_messages
+    using:
+      foreign_key_constraint_on:
+        column: author_id
+        table:
+          schema: public
+          name: chat_messages
+  - name: disciplines
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          schema: public
+          name: user_disciplines
+  - name: liked_by
+    using:
+      foreign_key_constraint_on:
+        column: liked_by_user_id
+        table:
+          schema: public
+          name: likes_user_user
+  - name: liked_users
+    using:
+      foreign_key_constraint_on:
+        column: liked_user_id
+        table:
+          schema: public
+          name: likes_user_user
+  - name: locations
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          schema: public
+          name: user_locations
+  - name: posts
+    using:
+      foreign_key_constraint_on:
+        column: posted_by_id
+        table:
+          schema: public
+          name: posts
+  - name: public_trick_todos
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: v_public_user_trick_todos
+        insertion_order: null
+        column_mapping:
+          id: id
+  - name: refresh_tokens
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          schema: public
+          name: refresh_tokens
+  - name: stg_sets
+    using:
+      foreign_key_constraint_on:
+        column: set_by_id
+        table:
+          schema: public
+          name: stg_sets
+  - name: stg_submissions
+    using:
+      foreign_key_constraint_on:
+        column: submitted_by_id
+        table:
+          schema: public
+          name: stg_submissions
+computed_fields:
+  - name: is_registered_for_upcoming_stg
+    definition:
+      function:
+        schema: public
+        name: user_is_registered_for_upcoming_stg
+    comment: ''
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        id:
+          _eq: X-Hasura-User-Id
+      set:
+        id: x-hasura-User-Id
+      columns:
+        - avatar
+        - bio
+        - birthday
+        - created_at
+        - current_setup
+        - email
+        - favorite_tricks
+        - full_name
+        - interests
+        - nbds
+        - password
+        - profession
+        - teams
+        - trick_todos
+        - updated_at
+        - username
+        - willing_to_host
+      backend_only: false
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - avatar
+        - bio
+        - birthday
+        - created_at
+        - current_setup
+        - favorite_tricks
+        - full_name
+        - id
+        - interests
+        - nbds
+        - profession
+        - role
+        - teams
+        - trick_todos
+        - updated_at
+        - username
+        - willing_to_host
+      computed_fields:
+        - is_registered_for_upcoming_stg
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+        - avatar
+        - bio
+        - birthday
+        - created_at
+        - current_setup
+        - email
+        - favorite_tricks
+        - full_name
+        - id
+        - interests
+        - last_online_at
+        - nbds
+        - password
+        - profession
+        - role
+        - teams
+        - trick_todos
+        - updated_at
+        - username
+        - verified_email
+        - willing_to_host
+      computed_fields:
+        - is_registered_for_upcoming_stg
+      filter: {}
+      allow_aggregations: true
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - avatar
+        - bio
+        - birthday
+        - created_at
+        - current_setup
+        - email
+        - favorite_tricks
+        - full_name
+        - id
+        - interests
+        - nbds
+        - password
+        - profession
+        - role
+        - teams
+        - trick_todos
+        - updated_at
+        - username
+        - willing_to_host
+      filter:
+        id:
+          _eq: X-Hasura-User-Id
+      check:
+        id:
+          _eq: X-Hasura-User-Id
+      set:
+        id: x-hasura-User-Id

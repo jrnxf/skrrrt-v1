@@ -1,0 +1,7 @@
+#import "../fragments/stg.gql"
+
+query StgsWhereQuery($where: stgs_bool_exp) {
+  stgs(where: $where) {
+    ...Stg
+  }
+}

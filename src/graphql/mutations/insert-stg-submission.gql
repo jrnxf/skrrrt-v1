@@ -1,0 +1,22 @@
+#import "../fragments/stg.gql"
+
+mutation InsertStgSubmissionMutation(
+  $stg_set_id: Int!
+  $stg_id: Int!
+  $video_asset_id: String!
+  $video_playback_id: String!
+) {
+  insert_stg_submissions_one(
+    object: {
+      stg_set_id: $stg_set_id
+      stg_id: $stg_id
+      video_asset_id: $video_asset_id
+      video_playback_id: $video_playback_id
+    }
+  ) {
+    id
+    stg {
+      ...Stg
+    }
+  }
+}
