@@ -15,7 +15,7 @@ export const TextareaAutosize = ({ handleSubmit }) => {
       placeholder="Write a message..."
       minRows={3}
       maxRows={6}
-      className="w-full px-4 py-3 text-lg leading-tight border-0 rounded-md shadow-sm resize-none dark:bg-nord1 bg-nord5 text-nord6 keyboard-focus-visible placeholder-shown dark:placeholder-nord4"
+      className="w-full px-4 py-3 text-lg leading-tight border-0 rounded-md shadow-sm resize-none dark:bg-nord1 bg-nord5 keyboard-focus-visible placeholder-shown dark:placeholder-nord4"
       onFocus={() => {
         if (!isAuthenticated) {
           addToast(`You must login to write a message.`, {

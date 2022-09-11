@@ -14,7 +14,7 @@ import {
 } from '@/components'
 import { useAuth } from '@/context'
 import { usePosts, useUser } from '@/hooks'
-import { META_DEFAULTS } from '@/utils'
+import { META_DEFAULTS, preferCdn } from '@/utils'
 import Tippy from '@tippyjs/react'
 import moment from 'moment'
 import Head from 'next/head'
@@ -149,7 +149,11 @@ export const User: FC<Props> = ({ username }) => {
         <meta property="og:title" content={`skrrrt ~ ${user.full_name}`} key="og:title" />
         <meta property="description" content={user?.bio || ``} key="description" />
         <meta property="og:description" content={user?.bio || ``} key="og:description" />
-        <meta property="og:image" content={user?.avatar || META_DEFAULTS.OG_IMAGE} key="og:image" />
+        <meta
+          property="og:image"
+          content={preferCdn(user?.avatar) || META_DEFAULTS.OG_IMAGE}
+          key="og:image"
+        />
         <meta property="og:image:alt" content={user.full_name} key="og:image:alt" />
       </Head>
       <div className="flex flex-col w-full mb-4 text-lg">
