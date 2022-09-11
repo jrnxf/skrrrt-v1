@@ -1,25 +1,25 @@
 table:
-  schema: public
   name: stg_players
+  schema: public
 object_relationships:
   - name: player
     using:
       manual_configuration:
-        remote_table:
-          schema: public
-          name: users
-        insertion_order: null
         column_mapping:
           player_id: id
+        insertion_order: null
+        remote_table:
+          name: users
+          schema: public
   - name: stg
     using:
       manual_configuration:
-        remote_table:
-          schema: public
-          name: stgs
-        insertion_order: null
         column_mapping:
           stg_id: id
+        insertion_order: null
+        remote_table:
+          name: stgs
+          schema: public
 insert_permissions:
   - role: user
     permission:
@@ -31,7 +31,6 @@ insert_permissions:
       columns:
         - stg_id
         - player_id
-      backend_only: false
 select_permissions:
   - role: anonymous
     permission:
@@ -64,6 +63,7 @@ update_permissions:
 delete_permissions:
   - role: user
     permission:
+      backend_only: false
       filter:
         player_id:
           _eq: X-Hasura-User-Id

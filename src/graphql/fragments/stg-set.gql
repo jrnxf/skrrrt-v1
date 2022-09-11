@@ -32,7 +32,6 @@ fragment StgSet on stg_sets {
     username
     avatar
     locations {
-      id
       type
       lat
       lng
@@ -63,7 +62,6 @@ fragment StgSet on stg_sets {
       username
       avatar
       locations {
-        id
         type
         lat
         lng

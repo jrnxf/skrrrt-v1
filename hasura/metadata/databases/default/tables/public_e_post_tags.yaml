@@ -1,6 +1,6 @@
 table:
-  schema: public
   name: e_post_tags
+  schema: public
 is_enum: true
 select_permissions:
   - role: anonymous

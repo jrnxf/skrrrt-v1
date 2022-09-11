@@ -1,6 +1,6 @@
 table:
-  schema: public
   name: likes_post_message_user
+  schema: public
 object_relationships:
   - name: post_message
     using:
@@ -19,7 +19,6 @@ insert_permissions:
       columns:
         - liked_by_user_id
         - post_message_id
-      backend_only: false
 select_permissions:
   - role: anonymous
     permission:
@@ -52,6 +51,7 @@ update_permissions:
 delete_permissions:
   - role: user
     permission:
+      backend_only: false
       filter:
         liked_by_user_id:
           _eq: X-Hasura-User-Id

@@ -1,7 +1,0 @@
-subscription UnseenUsersCountSubscription($users_page_activity: timestamptz) {
-  users_aggregate(where: { created_at: { _gt: $users_page_activity } }) {
-    aggregate {
-      count
-    }
-  }
-}

@@ -26,7 +26,6 @@ fragment StgSubmission on stg_submissions {
     username
     avatar
     locations {
-      id
       type
       lat
       lng

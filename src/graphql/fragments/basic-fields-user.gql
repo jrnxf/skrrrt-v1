@@ -9,11 +9,7 @@ fragment BasicFieldsUser on users {
   updated_at
   role
   is_registered_for_upcoming_stg
-  activity {
-    app
-  }
   locations {
-    id
     type
     lat
     lng

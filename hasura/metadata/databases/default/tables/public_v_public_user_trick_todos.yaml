@@ -1,6 +1,6 @@
 table:
-  schema: public
   name: v_public_user_trick_todos
+  schema: public
 select_permissions:
   - role: anonymous
     permission:

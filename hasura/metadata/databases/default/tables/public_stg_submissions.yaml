@@ -1,6 +1,6 @@
 table:
-  schema: public
   name: stg_submissions
+  schema: public
 object_relationships:
   - name: set_landed
     using:
@@ -17,15 +17,15 @@ array_relationships:
       foreign_key_constraint_on:
         column: stg_submission_id
         table:
-          schema: public
           name: likes_stg_submission_user
+          schema: public
   - name: messages
     using:
       foreign_key_constraint_on:
         column: stg_submission_id
         table:
-          schema: public
           name: stg_submission_messages
+          schema: public
 insert_permissions:
   - role: user
     permission:
@@ -51,7 +51,6 @@ insert_permissions:
         - updated_at
         - video_asset_id
         - video_playback_id
-      backend_only: false
 select_permissions:
   - role: anonymous
     permission:
@@ -118,6 +117,7 @@ update_permissions:
 delete_permissions:
   - role: user
     permission:
+      backend_only: false
       filter:
         _and:
           - set_landed:

@@ -1,6 +1,6 @@
 table:
-  schema: public
   name: user_locations
+  schema: public
 object_relationships:
   - name: user
     using:
@@ -21,19 +21,17 @@ insert_permissions:
         - formatted_address
         - type
         - user_id
-      backend_only: false
 select_permissions:
   - role: anonymous
     permission:
       columns:
-        - type
-        - lat
-        - lng
         - country_long_name
         - country_short_name
         - formatted_address
+        - lat
+        - lng
+        - type
         - user_id
-        - id
       filter: {}
   - role: user
     permission:
@@ -41,7 +39,6 @@ select_permissions:
         - country_long_name
         - country_short_name
         - formatted_address
-        - id
         - lat
         - lng
         - type
@@ -69,6 +66,7 @@ update_permissions:
 delete_permissions:
   - role: user
     permission:
+      backend_only: false
       filter:
         user_id:
           _eq: X-Hasura-User-Id

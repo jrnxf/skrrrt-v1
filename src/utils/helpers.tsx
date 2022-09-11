@@ -219,10 +219,6 @@ export const shuffleArray = (arr) => {
   }
 }
 
-export const userIsOnline = (date: any) => {
-  return moment(date) > moment().subtract(6, 'minutes')
-}
-
 export const classNames = (...args: any) => args.filter(Boolean).join(' ')
 
 export const parseAndSetCookies = (ctx, array) => {

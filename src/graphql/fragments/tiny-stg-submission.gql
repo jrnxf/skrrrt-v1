@@ -28,7 +28,6 @@ fragment TinyStgSubmission on stg_submissions {
       spotify
     }
     locations {
-      id
       type
       lat
       lng

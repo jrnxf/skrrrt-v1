@@ -26,7 +26,6 @@ fragment Stg on stgs {
         spotify
       }
       locations {
-        id
         type
         lat
         lng

@@ -7,9 +7,6 @@ fragment TinyUser on users {
   profession
   created_at
   updated_at
-  activity {
-    app
-  }
   locations {
     type
     country_long_name

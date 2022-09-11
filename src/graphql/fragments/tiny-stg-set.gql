@@ -16,7 +16,6 @@ fragment TinyStgSet on stg_sets {
     username
     avatar
     locations {
-      id
       type
       lat
       lng

@@ -6,9 +6,6 @@ fragment ChatMessage on chat_messages {
     id
     full_name
     username
-    activity {
-      app
-    }
   }
   likes {
     chat_message_id

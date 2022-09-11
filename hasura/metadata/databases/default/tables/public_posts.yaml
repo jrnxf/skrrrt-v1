@@ -1,6 +1,6 @@
 table:
-  schema: public
   name: posts
+  schema: public
 object_relationships:
   - name: posted_by
     using:
@@ -11,22 +11,22 @@ array_relationships:
       foreign_key_constraint_on:
         column: post_id
         table:
-          schema: public
           name: likes_post_user
+          schema: public
   - name: messages
     using:
       foreign_key_constraint_on:
         column: post_id
         table:
-          schema: public
           name: post_messages
+          schema: public
   - name: tags
     using:
       foreign_key_constraint_on:
         column: post_id
         table:
-          schema: public
           name: post_tags
+          schema: public
 insert_permissions:
   - role: user
     permission:
@@ -47,7 +47,6 @@ insert_permissions:
         - updated_at
         - video_asset_id
         - video_playback_id
-      backend_only: false
 select_permissions:
   - role: anonymous
     permission:
@@ -107,6 +106,7 @@ update_permissions:
 delete_permissions:
   - role: user
     permission:
+      backend_only: false
       filter:
         posted_by_id:
           _eq: X-Hasura-User-Id

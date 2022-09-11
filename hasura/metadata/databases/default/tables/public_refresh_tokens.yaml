@@ -1,6 +1,6 @@
 table:
-  schema: public
   name: refresh_tokens
+  schema: public
 object_relationships:
   - name: user
     using:

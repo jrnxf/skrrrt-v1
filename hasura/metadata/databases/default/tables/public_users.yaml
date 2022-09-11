@@ -1,105 +1,96 @@
 table:
-  schema: public
   name: users
+  schema: public
 object_relationships:
-  - name: activity
-    using:
-      manual_configuration:
-        remote_table:
-          schema: public
-          name: user_activity
-        insertion_order: null
-        column_mapping:
-          id: user_id
   - name: socials
     using:
       manual_configuration:
-        remote_table:
-          schema: public
-          name: user_socials
-        insertion_order: null
         column_mapping:
           id: user_id
+        insertion_order: null
+        remote_table:
+          name: user_socials
+          schema: public
 array_relationships:
   - name: chat_messages
     using:
       foreign_key_constraint_on:
         column: author_id
         table:
-          schema: public
           name: chat_messages
+          schema: public
   - name: disciplines
     using:
       foreign_key_constraint_on:
         column: user_id
         table:
-          schema: public
           name: user_disciplines
+          schema: public
   - name: liked_by
     using:
       foreign_key_constraint_on:
         column: liked_by_user_id
         table:
-          schema: public
           name: likes_user_user
+          schema: public
   - name: liked_users
     using:
       foreign_key_constraint_on:
         column: liked_user_id
         table:
-          schema: public
           name: likes_user_user
+          schema: public
   - name: locations
     using:
       foreign_key_constraint_on:
         column: user_id
         table:
-          schema: public
           name: user_locations
+          schema: public
   - name: posts
     using:
       foreign_key_constraint_on:
         column: posted_by_id
         table:
-          schema: public
           name: posts
+          schema: public
   - name: public_trick_todos
     using:
       manual_configuration:
-        remote_table:
-          schema: public
-          name: v_public_user_trick_todos
-        insertion_order: null
         column_mapping:
           id: id
+        insertion_order: null
+        remote_table:
+          name: v_public_user_trick_todos
+          schema: public
   - name: refresh_tokens
     using:
       foreign_key_constraint_on:
         column: user_id
         table:
-          schema: public
           name: refresh_tokens
+          schema: public
   - name: stg_sets
     using:
       foreign_key_constraint_on:
         column: set_by_id
         table:
-          schema: public
           name: stg_sets
+          schema: public
   - name: stg_submissions
     using:
       foreign_key_constraint_on:
         column: submitted_by_id
         table:
-          schema: public
           name: stg_submissions
+          schema: public
 computed_fields:
   - name: is_registered_for_upcoming_stg
     definition:
       function:
-        schema: public
         name: user_is_registered_for_upcoming_stg
-    comment: ''
+        schema: public
+    comment: ""
 insert_permissions:
   - role: user
     permission:
@@ -126,7 +117,6 @@ insert_permissions:
         - updated_at
         - username
         - willing_to_host
-      backend_only: false
 select_permissions:
   - role: anonymous
     permission:

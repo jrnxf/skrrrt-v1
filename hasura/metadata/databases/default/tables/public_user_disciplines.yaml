@@ -1,6 +1,6 @@
 table:
-  schema: public
   name: user_disciplines
+  schema: public
 object_relationships:
   - name: user
     using:
@@ -16,7 +16,6 @@ insert_permissions:
       columns:
         - discipline
         - user_id
-      backend_only: false
 select_permissions:
   - role: anonymous
     permission:
@@ -49,6 +48,7 @@ update_permissions:
 delete_permissions:
   - role: user
     permission:
+      backend_only: false
       filter:
         user_id:
           _eq: X-Hasura-User-Id

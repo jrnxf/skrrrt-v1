@@ -1,6 +1,6 @@
 table:
-  schema: public
   name: e_user_disciplines
+  schema: public
 is_enum: true
 array_relationships:
   - name: user_disciplines
@@ -8,8 +8,8 @@ array_relationships:
       foreign_key_constraint_on:
         column: discipline
         table:
-          schema: public
           name: user_disciplines
+          schema: public
 select_permissions:
   - role: anonymous
     permission:

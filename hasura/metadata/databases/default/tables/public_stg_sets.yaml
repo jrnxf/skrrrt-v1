@@ -1,6 +1,6 @@
 table:
-  schema: public
   name: stg_sets
+  schema: public
 object_relationships:
   - name: set_by
     using:
@@ -8,34 +8,34 @@ object_relationships:
   - name: stg
     using:
       manual_configuration:
-        remote_table:
-          schema: public
-          name: stgs
-        insertion_order: null
         column_mapping:
           stg_id: id
+        insertion_order: null
+        remote_table:
+          name: stgs
+          schema: public
 array_relationships:
   - name: likes
     using:
       foreign_key_constraint_on:
         column: stg_set_id
         table:
-          schema: public
           name: likes_stg_set_user
+          schema: public
   - name: messages
     using:
       foreign_key_constraint_on:
         column: stg_set_id
         table:
-          schema: public
           name: stg_set_messages
+          schema: public
   - name: submissions_where_landed
     using:
       foreign_key_constraint_on:
         column: stg_set_id
         table:
-          schema: public
           name: stg_submissions
+          schema: public
 insert_permissions:
   - role: user
     permission:
@@ -54,7 +54,6 @@ insert_permissions:
         - updated_at
         - video_asset_id
         - video_playback_id
-      backend_only: false
 select_permissions:
   - role: anonymous
     permission:
@@ -121,6 +120,7 @@ update_permissions:
 delete_permissions:
   - role: user
     permission:
+      backend_only: false
       filter:
         set_by_id:
           _eq: X-Hasura-User-Id

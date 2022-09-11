@@ -1,6 +1,6 @@
 table:
-  schema: public
   name: stg_set_messages
+  schema: public
 object_relationships:
   - name: author
     using:
@@ -14,8 +14,8 @@ array_relationships:
       foreign_key_constraint_on:
         column: stg_set_message_id
         table:
-          schema: public
           name: likes_stg_set_message_user
+          schema: public
 insert_permissions:
   - role: user
     permission:
@@ -31,7 +31,6 @@ insert_permissions:
         - author_id
         - id
         - stg_set_id
-      backend_only: false
 select_permissions:
   - role: anonymous
     permission:
@@ -76,6 +75,7 @@ update_permissions:
 delete_permissions:
   - role: user
     permission:
+      backend_only: false
       filter:
         author_id:
           _eq: X-Hasura-User-Id

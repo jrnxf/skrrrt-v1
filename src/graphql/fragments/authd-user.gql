@@ -7,11 +7,4 @@ fragment AuthdUser on users {
   verified_email
   role
   is_registered_for_upcoming_stg
-  # TODO -- figure out why having the activity data here is causing unnecessary calls to AuthdUserByQueryId
-  activity {
-    app
-    posts_page
-    chat_page
-    # users_page
-  }
 }

@@ -8,7 +8,6 @@ import {
   CSV_SEPARATOR_SPACE,
   // scrollToBottomOfWindow,
   ssrAuthCheck,
-  userIsOnline,
 } from '@/utils'
 import Tippy from '@tippyjs/react'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
@@ -138,17 +137,6 @@ const Chat = () => {
                               }`}
                             >
                               <span>{message?.author?.full_name}</span>
-
-                              {userIsOnline(message?.author?.activity?.app) && (
-                                <span
-                                  className={`relative flex h-2 w-2 ${
-                                    message.author_id === authdUser?.id ? 'mr-1 ' : 'ml-1'
-                                  }`}
-                                >
-                                  <span className="absolute inline-flex w-full h-full rounded-full opacity-75 bg-nord14 animate-ping"></span>
-                                  <span className="relative inline-flex w-2 h-2 rounded-full bg-nord14"></span>
-                                </span>
-                              )}
                             </div>
                             <div className="text-xs font-medium text-secondary">
                               <Moment fromNow interval={15000}>

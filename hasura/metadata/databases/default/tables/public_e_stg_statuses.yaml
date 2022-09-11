@@ -1,4 +1,4 @@
 table:
-  schema: public
   name: e_stg_statuses
+  schema: public
 is_enum: true

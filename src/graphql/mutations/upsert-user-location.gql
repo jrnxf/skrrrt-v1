@@ -17,14 +17,7 @@ mutation UpsertUserLocationMutation(
     }
     on_conflict: {
       constraint: user_locations_pkey
-      update_columns: [
-        type
-        lat
-        lng
-        country_long_name
-        country_short_name
-        formatted_address
-      ]
+      update_columns: [type, lat, lng, country_long_name, country_short_name, formatted_address]
     }
   ) {
     type
@@ -36,7 +29,6 @@ mutation UpsertUserLocationMutation(
     user {
       full_name
       locations {
-        id
         type
         lat
         lng

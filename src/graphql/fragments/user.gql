@@ -25,7 +25,6 @@ fragment User on users {
   role
   is_registered_for_upcoming_stg
   locations {
-    id
     type
     lat
     lng

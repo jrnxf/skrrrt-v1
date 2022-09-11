@@ -1,17 +1,10 @@
 table:
-  schema: public
   name: user_activity
+  schema: public
 object_relationships:
   - name: user
     using:
       foreign_key_constraint_on: user_id
-computed_fields:
-  - name: is_online
-    definition:
-      function:
-        schema: public
-        name: user_is_online
-    comment: ''
 insert_permissions:
   - role: user
     permission:
@@ -26,7 +19,6 @@ insert_permissions:
         - posts_page
         - user_id
         - users_page
-      backend_only: false
 select_permissions:
   - role: anonymous
     permission:
@@ -34,8 +26,6 @@ select_permissions:
         - app
         - chat_page
         - user_id
-      computed_fields:
-        - is_online
       filter: {}
   - role: user
     permission:
@@ -45,8 +35,6 @@ select_permissions:
         - posts_page
         - user_id
         - users_page
-      computed_fields:
-        - is_online
       filter: {}
 update_permissions:
   - role: user
@@ -68,6 +56,7 @@ update_permissions:
 delete_permissions:
   - role: user
     permission:
+      backend_only: false
       filter:
         user_id:
           _eq: X-Hasura-User-Id

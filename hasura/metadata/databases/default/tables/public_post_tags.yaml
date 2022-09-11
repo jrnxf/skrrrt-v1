@@ -1,6 +1,6 @@
 table:
-  schema: public
   name: post_tags
+  schema: public
 object_relationships:
   - name: post
     using:
@@ -15,7 +15,6 @@ insert_permissions:
       columns:
         - tag
         - post_id
-      backend_only: false
 select_permissions:
   - role: anonymous
     permission:
@@ -48,6 +47,7 @@ update_permissions:
 delete_permissions:
   - role: user
     permission:
+      backend_only: false
       filter:
         post:
           posted_by_id:

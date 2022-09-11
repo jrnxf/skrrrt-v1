@@ -1,11 +1,16 @@
 table:
-  schema: public
   name: likes_user_user
+  schema: public
 configuration:
-  custom_root_fields: {}
+  column_config:
+    liked_by_user_id:
+      custom_name: liked_by_user_id
+    liked_user_id:
+      custom_name: liked_user_id
   custom_column_names:
     liked_by_user_id: liked_by_user_id
     liked_user_id: liked_user_id
+  custom_root_fields: {}
 object_relationships:
   - name: liked_by
     using:
@@ -23,7 +28,6 @@ insert_permissions:
         liked_by_user_id: x-hasura-User-Id
       columns:
         - liked_user_id
-      backend_only: false
 select_permissions:
   - role: anonymous
     permission:
@@ -51,6 +55,7 @@ update_permissions:
 delete_permissions:
   - role: user
     permission:
+      backend_only: false
       filter:
         liked_by_user_id:
           _eq: X-Hasura-User-Id
