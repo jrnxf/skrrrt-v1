@@ -172,7 +172,7 @@ export const User: FC<Props> = ({ username }) => {
                   current && '2xl:-mt-44 sm:-mt-36 -mt-28'
                 }`}
               >
-                <div className="relative w-56 h-56 mx-auto mb-4 overflow-hidden shadow-sm 2xl:w-84 2xl:h-84 sm:w-72 sm:h-72">
+                <div className="relative w-56 h-56 mx-auto mb-4 overflow-hidden 2xl:w-84 2xl:h-84 sm:w-72 sm:h-72">
                   <UserAvatar
                     user={user}
                     initialsClasses="2xl:text-8xl sm:text-7xl text-6xl bg-nord6 dark:bg-nord0 border-6 border-primary"
