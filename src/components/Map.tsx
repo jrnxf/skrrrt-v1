@@ -7,7 +7,7 @@ export const Map = ({ coords }) => {
   const { isDarkMode } = useTheme()
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: 'AIzaSyCo5Mn21GTk0cOjR3pNb5wlc72p_UbJ4fE',
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
   })
 
   const [map, setMap] = React.useState(null)

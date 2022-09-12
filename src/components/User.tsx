@@ -159,7 +159,7 @@ export const User: FC<Props> = ({ username }) => {
       <div className="flex flex-col w-full mb-4 text-lg">
         <div className="w-full">
           {current && (
-            <div className="relative w-full h-64 max-w-5xl mx-auto border-2 rounded-md 2xl:h-96 border-nord6 dark:border-nord0 bg-nord6 dark:bg-nord0">
+            <div className="relative w-full h-64 max-w-5xl mx-auto border-2 rounded-md sm:h-84 2xl:h-96 border-nord6 dark:border-nord0 bg-nord6 dark:bg-nord0">
               <Map
                 coords={{
                   lat: current?.lat,
