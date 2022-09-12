@@ -1,7 +1,7 @@
 #import "../fragments/tiny-user.gql"
 
 query UsersQuery {
-  users(order_by: { full_name: asc }) {
+  users(order_by: { full_name: asc }, where: { role: { _neq: test } }) {
     ...TinyUser
   }
 }

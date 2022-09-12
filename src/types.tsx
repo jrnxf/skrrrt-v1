@@ -1021,6 +1021,7 @@ export enum E_User_Roles_Constraint {
 
 export enum E_User_Roles_Enum {
   Admin = 'admin',
+  Test = 'test',
   User = 'user'
 }
 
@@ -17460,7 +17461,7 @@ export type UsersSearchQueryLazyQueryHookResult = ReturnType<typeof useUsersSear
 export type UsersSearchQueryQueryResult = Apollo.QueryResult<UsersSearchQuery, UsersSearchQueryVariables>;
 export const UsersQueryDocument = gql`
     query UsersQuery {
-  users(order_by: {full_name: asc}) {
+  users(order_by: {full_name: asc}, where: {role: {_neq: test}}) {
     ...TinyUser
   }
 }

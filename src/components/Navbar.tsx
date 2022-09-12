@@ -4,16 +4,12 @@ import { useAuth, useTheme } from '@/context'
 import { useClickawayListener } from '@/hooks'
 import { classNames } from '@/utils'
 import {
-  AdjustmentsIcon,
   BeakerIcon,
   CashIcon,
   ChatIcon,
-  ChevronUpIcon,
   DocumentTextIcon,
   DotsHorizontalIcon,
   GlobeIcon,
-  IdentificationIcon,
-  InformationCircleIcon,
   LoginIcon,
   LogoutIcon,
   MailIcon,
@@ -21,7 +17,6 @@ import {
   MoonIcon,
   NewspaperIcon,
   ShieldCheckIcon,
-  ShoppingCartIcon,
   SunIcon,
   UserCircleIcon,
   VideoCameraIcon,
@@ -29,7 +24,6 @@ import {
 } from '@heroicons/react/outline'
 import { useRouter } from 'next/router'
 import React, { useEffect, useRef, useState } from 'react'
-import { Collapse } from 'react-collapse'
 import { Logger } from '@/middleware'
 
 export const Navbar = () => {
@@ -62,22 +56,16 @@ export const Navbar = () => {
       icon: <GlobeIcon className="w-6 h-6 mr-2" />,
       active: router.pathname.startsWith('/users'),
     },
-    // {
-    //   name: 'shop',
-    //   href: '/shop',
-    //   icon: <ShoppingCartIcon className="w-6 h-6 mr-2" />,
-    //   active: router.pathname.startsWith('/shop'),
-    // },
   ]
 
-  const [isAtTopOfWindow, setIsAtTopOfWindow] = useState(false)
+  const [isAtTopOfWindow, setIsAtTopOfWindow] = useState(true)
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
   const [secondaryNavOpen, setSecondaryNavOpen] = useState(false)
-  const [secondaryNavOptionExpanded, setSecondaryNavOptionExpanded] = useState<string>(null)
   const navRef = useRef(null)
   const secondaryNavRef = useRef(null)
 
   const checkWindowScrollPos = () => {
+    console.log(window?.scrollY)
     setIsAtTopOfWindow(window?.scrollY < 15)
   }
 
@@ -94,7 +82,6 @@ export const Navbar = () => {
     router.events.on('routeChangeStart', () => {
       setMobileNavOpen(false)
       setSecondaryNavOpen(false)
-      setSecondaryNavOptionExpanded(null)
     })
   }, [])
 
@@ -104,7 +91,6 @@ export const Navbar = () => {
 
   useClickawayListener(secondaryNavRef, () => {
     setSecondaryNavOpen(false)
-    setSecondaryNavOptionExpanded(null)
   })
 
   return (
