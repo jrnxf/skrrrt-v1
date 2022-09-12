@@ -179,7 +179,7 @@ export const Navbar = () => {
                   <span className="sr-only">Open user menu</span>
 
                   {authdUser ? (
-                    <div className="rounded-full">
+                    <div className="w-8 h-8 rounded-full">
                       <UserAvatar
                         user={authdUser}
                         initialsClasses="bg-nord5 dark:bg-nord1 text-xs"
