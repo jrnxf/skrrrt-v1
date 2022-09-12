@@ -6,14 +6,15 @@ import { ChatMessagesQuery, ChatMessagesQueryDocument } from '@/types'
 import {
   classNames,
   CSV_SEPARATOR_SPACE,
-  // scrollToBottomOfWindow,
+  isNearBottomOfWindow,
+  scrollToBottomOfWindow,
   ssrAuthCheck,
 } from '@/utils'
 import Tippy from '@tippyjs/react'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Moment from 'react-moment'
 import { addApolloState, initializeApollo } from '@/lib/apollo'
 import { Logger } from '@/middleware'
@@ -30,7 +31,7 @@ const Chat = () => {
   const { getUserResponse } = useUserActions()
   const { authdUser, isAuthenticated } = useAuth()
 
-  // const [firstRenderScroll, setFirstRenderScroll] = useState<boolean>(false)
+  const [firstRenderScroll, setFirstRenderScroll] = useState<boolean>(false)
 
   const handleMessageClick = async (e, message) => {
     if (e.target.tagName === 'A' || window.getSelection()?.toString() !== '') return // they clicked on a link or something is highlighted
@@ -50,15 +51,15 @@ const Chat = () => {
     }
   }
 
-  // useEffect(() => {
-  //   if (messages?.length > 0 && !firstRenderScroll) {
-  //     setFirstRenderScroll(true)
-  //     setTimeout(scrollToBottomOfWindow, 0)
-  //   }
-  //   if (isNearBottomOfWindow(200)) {
-  //     scrollToBottomOfWindow()
-  //   }
-  // }, [messages, firstRenderScroll])
+  useEffect(() => {
+    if (messages?.length > 0 && !firstRenderScroll) {
+      setFirstRenderScroll(true)
+      setTimeout(scrollToBottomOfWindow, 0)
+    }
+    if (isNearBottomOfWindow(200)) {
+      scrollToBottomOfWindow()
+    }
+  }, [messages, firstRenderScroll])
 
   return (
     <>
