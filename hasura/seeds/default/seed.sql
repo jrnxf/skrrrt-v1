@@ -2,7 +2,8 @@ INSERT INTO
     e_user_roles (type)
 VALUES
     ('admin'),
-    ('user');
+    ('user'),
+    ('test');
 
 INSERT INTO
     e_user_locations (type)

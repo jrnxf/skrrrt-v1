@@ -71,6 +71,7 @@ export const LOCAL_STORAGE = {
 export const ROLES = {
   ADMIN: 'admin',
   USER: 'user',
+  TEST: 'test',
 }
 
 export const BREAKPOINTS = {
