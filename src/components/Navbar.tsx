@@ -65,7 +65,6 @@ export const Navbar = () => {
   const secondaryNavRef = useRef(null)
 
   const checkWindowScrollPos = () => {
-    console.log(window?.scrollY)
     setIsAtTopOfWindow(window?.scrollY < 15)
   }
 

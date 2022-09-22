@@ -213,13 +213,13 @@ export class MediaService {
   }
 
   static async deleteAllMuxAssets(): Promise<boolean> {
-    try {
-      const assets = await this.mux.Video.Assets.list({ limit: 1 }) // increase this number as you gain confidence you are deleting out of the correct environment
-      await Promise.all(assets.map((a) => this.mux.Video.Assets.del(a.id)))
-      return true
-    } catch {
-      return false
-    }
+    // try {
+    //   const assets = await this.mux.Video.Assets.list({ limit: 1 }) // increase this number as you gain confidence you are deleting out of the correct environment
+    //   await Promise.all(assets.map((a) => this.mux.Video.Assets.del(a.id)))
+    //   return true
+    // } catch {
+    //   return false
+    // }
   }
 
   static async getMuxUpload(uploadId: string): Promise<any> {

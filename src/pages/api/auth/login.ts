@@ -17,7 +17,6 @@ const handler = nc<NextApiRequest, NextApiResponse>()
 
       user = await UsersService.getUserWithPasswordByEmail(email)
 
-      console.log(user)
       if (user) {
         const isCorrectPassword = await bcrypt.compare(password, user.password) // the salt is incorporated into the hash (as plain text). That's how .compare can truly do a comparison
 
